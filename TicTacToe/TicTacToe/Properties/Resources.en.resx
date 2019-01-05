@@ -118,30 +118,30 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="r1" xml:space="preserve">
-    <value>Kółko i krzyżyk</value>
+    <value>Tic Tac Toe</value>
   </data>
   <data name="r2" xml:space="preserve">
-    <value>Gracz</value>
+    <value>Player</value>
   </data>
   <data name="r3" xml:space="preserve">
-    <value>Cofnij ruch</value>
+    <value>Undo</value>
   </data>
   <data name="r4" xml:space="preserve">
-    <value>Graj</value>
+    <value>Play</value>
   </data>
   <data name="r5" xml:space="preserve">
-    <value>Otwórz opcje</value>
+    <value>Open settings</value>
   </data>
   <data name="r6" xml:space="preserve">
-    <value>Liczba kolumn</value>
+    <value>Number of columns</value>
   </data>
   <data name="r7" xml:space="preserve">
-    <value>Język</value>
+    <value>Language</value>
   </data>
   <data name="r8" xml:space="preserve">
-    <value>Zapisz</value>
+    <value>Save</value>
   </data>
   <data name="r9" xml:space="preserve">
-    <value>Anuluj</value>
+    <value>Canecl</value>
   </data>
 </root>
