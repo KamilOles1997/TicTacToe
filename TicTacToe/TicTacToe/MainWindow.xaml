@@ -23,8 +23,6 @@
     </Window.Resources>
 
     <Grid x:Name="LayoutRoot">
-
-
-
-    </Grid>
+		<ContentControl Content="{Binding CurrentViewModel}" />
+	</Grid>
 </controls:MetroWindow>

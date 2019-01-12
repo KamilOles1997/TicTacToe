@@ -1,15 +1,21 @@
 ﻿using System;
+using TicTacToeLib.Model;
 
 namespace TicTacToe.Model
 {
 	public class DataService : IDataService
 	{
-		public void GetData(Action<DataItem, Exception> callback)
+		public void GetMainSettings(Action<MainSettings, Exception> callback)
 		{
-			// Use this to connect to the actual data service
-
-			var item = new DataItem("Welcome to MVVM Light");
-			callback(item, null);
+			try
+			{
+				MainSettings settings = MainSettings.LoadFromXML();
+				callback(settings, null);
+			}
+			catch(Exception ex)
+			{
+				callback(null, ex);
+			}
 		}
 	}
 }

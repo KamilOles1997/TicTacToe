@@ -1,0 +1,18 @@
+﻿<UserControl x:Class="TicTacToe.View.MainView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TicTacToe.View"
+			 xmlns:resx="clr-namespace:TicTacToe.Properties"
+             mc:Ignorable="d" 
+             d:DesignHeight="500" d:DesignWidth="450"
+			 DataContext="{Binding Main, Source={StaticResource Locator}}">
+    <Grid>
+		<StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+			<Button Command="{Binding PlayViewCommand}" Content="{x:Static resx:Resources.r4}" />
+			<Button Command="{Binding SettingsViewCommand}" Margin="0 48 0 0" Content="{x:Static resx:Resources.r5}" />
+			<Button Command="{Binding AboutProgramCommand}" Margin="0 48 0 0" Content="{x:Static resx:Resources.r10}" />
+		</StackPanel>
+	</Grid>
+</UserControl>

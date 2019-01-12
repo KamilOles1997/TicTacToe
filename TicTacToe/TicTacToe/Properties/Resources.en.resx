@@ -120,6 +120,15 @@
   <data name="r1" xml:space="preserve">
     <value>Tic Tac Toe</value>
   </data>
+  <data name="r10" xml:space="preserve">
+    <value>About program</value>
+  </data>
+  <data name="r11" xml:space="preserve">
+    <value>Size of grid:</value>
+  </data>
+  <data name="r12" xml:space="preserve">
+    <value>Win after:</value>
+  </data>
   <data name="r2" xml:space="preserve">
     <value>Player</value>
   </data>
@@ -136,12 +145,12 @@
     <value>Number of columns</value>
   </data>
   <data name="r7" xml:space="preserve">
-    <value>Language</value>
+    <value>Language:</value>
   </data>
   <data name="r8" xml:space="preserve">
     <value>Save</value>
   </data>
   <data name="r9" xml:space="preserve">
-    <value>Canecl</value>
+    <value>Cancel</value>
   </data>
 </root>

@@ -1,4 +1,7 @@
 ﻿using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Command;
+using GalaSoft.MvvmLight.Ioc;
+using System.Windows.Input;
 using TicTacToe.Model;
 
 namespace TicTacToe.ViewModel
@@ -12,28 +15,79 @@ namespace TicTacToe.ViewModel
 	public class MainViewModel : ViewModelBase
 	{
 		private readonly IDataService _dataService;
+		private ViewModelBase currentViewModel;
+		private ICommand playViewCommand;
+		private ICommand settingsViewCommand;
+		private ICommand aboutProgramCommand;
+		
 
-		/// <summary>
-		/// The <see cref="WelcomeTitle" /> property's name.
-		/// </summary>
-		public const string WelcomeTitlePropertyName = "WelcomeTitle";
-
-		private string _welcomeTitle = string.Empty;
-
-		/// <summary>
-		/// Gets the WelcomeTitle property.
-		/// Changes to that property's value raise the PropertyChanged event. 
-		/// </summary>
-		public string WelcomeTitle
+		public ICommand PlayViewCommand
 		{
 			get
 			{
-				return _welcomeTitle;
+				if (playViewCommand == null)
+				{
+					playViewCommand = new RelayCommand(
+							() => SetCurrentView(SimpleIoc.Default.GetInstance<GameViewModel>()),
+							() => true
+						);
+				}
+				return playViewCommand;
 			}
-			set
+		}
+
+		public ICommand SettingsViewCommand
+		{
+			get
 			{
-				Set(ref _welcomeTitle, value);
+				if (settingsViewCommand == null)
+				{
+					settingsViewCommand = new RelayCommand(
+							() => SetCurrentView(SimpleIoc.Default.GetInstance<SettingsViewModel>()),
+							() => true
+						);
+				}
+				return settingsViewCommand;
 			}
+		}
+
+		public ICommand AboutProgramCommand
+		{
+			get
+			{
+				if (aboutProgramCommand == null)
+				{
+					aboutProgramCommand = new RelayCommand(
+							() => OpenAboutDialog(),
+							() => true
+						);
+				}
+				return aboutProgramCommand;
+			}
+		}
+		
+		private void SetCurrentView(ViewModelBase vm)
+		{
+			if(vm is GameViewModel)
+			{
+
+			}
+			else if(vm is SettingsViewModel)
+			{
+
+			}
+			CurrentViewModel = vm;
+		}
+
+		private void OpenAboutDialog()
+		{
+
+		}
+
+		public ViewModelBase CurrentViewModel
+		{
+			get => currentViewModel;
+			set => Set(ref currentViewModel, value);
 		}
 
 		/// <summary>
@@ -42,17 +96,7 @@ namespace TicTacToe.ViewModel
 		public MainViewModel(IDataService dataService)
 		{
 			_dataService = dataService;
-			_dataService.GetData(
-				(item, error) =>
-				{
-					if (error != null)
-					{
-						// Report error here
-						return;
-					}
-
-					WelcomeTitle = item.Title;
-				});
+			CurrentViewModel = this;
 		}
 
 		////public override void Cleanup()

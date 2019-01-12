@@ -39,6 +39,8 @@ namespace TicTacToe.ViewModel
 			}
 
 			SimpleIoc.Default.Register<MainViewModel>();
+			SimpleIoc.Default.Register<GameViewModel>();
+			SimpleIoc.Default.Register<SettingsViewModel>();
 		}
 
 		/// <summary>
@@ -52,6 +54,34 @@ namespace TicTacToe.ViewModel
 			get
 			{
 				return ServiceLocator.Current.GetInstance<MainViewModel>();
+			}
+		}
+
+		/// <summary>
+		/// Gets the Main property.
+		/// </summary>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance",
+			"CA1822:MarkMembersAsStatic",
+			Justification = "This non-static member is needed for data binding purposes.")]
+		public GameViewModel Game
+		{
+			get
+			{
+				return ServiceLocator.Current.GetInstance<GameViewModel>();
+			}
+		}
+
+		/// <summary>
+		/// Gets the Main property.
+		/// </summary>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance",
+			"CA1822:MarkMembersAsStatic",
+			Justification = "This non-static member is needed for data binding purposes.")]
+		public SettingsViewModel Settings
+		{
+			get
+			{
+				return ServiceLocator.Current.GetInstance<SettingsViewModel>();
 			}
 		}
 

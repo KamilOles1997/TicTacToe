@@ -70,6 +70,33 @@ namespace TicTacToe.Properties {
         }
         
         /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu O programie.
+        /// </summary>
+        public static string r10 {
+            get {
+                return ResourceManager.GetString("r10", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Rozmiar siatki:.
+        /// </summary>
+        public static string r11 {
+            get {
+                return ResourceManager.GetString("r11", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Wygrana przy:.
+        /// </summary>
+        public static string r12 {
+            get {
+                return ResourceManager.GetString("r12", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         /// Wyszukuje zlokalizowany ciąg podobny do ciągu Gracz.
         /// </summary>
         public static string r2 {
@@ -115,7 +142,7 @@ namespace TicTacToe.Properties {
         }
         
         /// <summary>
-        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Język.
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Język:.
         /// </summary>
         public static string r7 {
             get {

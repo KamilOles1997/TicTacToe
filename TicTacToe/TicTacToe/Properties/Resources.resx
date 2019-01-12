@@ -120,6 +120,15 @@
   <data name="r1" xml:space="preserve">
     <value>Kółko i krzyżyk</value>
   </data>
+  <data name="r10" xml:space="preserve">
+    <value>O programie</value>
+  </data>
+  <data name="r11" xml:space="preserve">
+    <value>Rozmiar siatki:</value>
+  </data>
+  <data name="r12" xml:space="preserve">
+    <value>Wygrana przy:</value>
+  </data>
   <data name="r2" xml:space="preserve">
     <value>Gracz</value>
   </data>
@@ -136,7 +145,7 @@
     <value>Liczba kolumn</value>
   </data>
   <data name="r7" xml:space="preserve">
-    <value>Język</value>
+    <value>Język:</value>
   </data>
   <data name="r8" xml:space="preserve">
     <value>Zapisz</value>
