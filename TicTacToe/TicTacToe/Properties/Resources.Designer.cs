@@ -97,6 +97,24 @@ namespace TicTacToe.Properties {
         }
         
         /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Podaj Imię gracza X.
+        /// </summary>
+        public static string r13 {
+            get {
+                return ResourceManager.GetString("r13", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Podaj Imię gracza O.
+        /// </summary>
+        public static string r14 {
+            get {
+                return ResourceManager.GetString("r14", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         /// Wyszukuje zlokalizowany ciąg podobny do ciągu Gracz.
         /// </summary>
         public static string r2 {

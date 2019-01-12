@@ -129,6 +129,12 @@
   <data name="r12" xml:space="preserve">
     <value>Win after:</value>
   </data>
+  <data name="r13" xml:space="preserve">
+    <value>Provide name for player X</value>
+  </data>
+  <data name="r14" xml:space="preserve">
+    <value>Provide name for player O</value>
+  </data>
   <data name="r2" xml:space="preserve">
     <value>Player</value>
   </data>

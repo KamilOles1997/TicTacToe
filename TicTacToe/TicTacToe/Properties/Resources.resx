@@ -129,6 +129,12 @@
   <data name="r12" xml:space="preserve">
     <value>Wygrana przy:</value>
   </data>
+  <data name="r13" xml:space="preserve">
+    <value>Podaj Imię gracza X</value>
+  </data>
+  <data name="r14" xml:space="preserve">
+    <value>Podaj Imię gracza O</value>
+  </data>
   <data name="r2" xml:space="preserve">
     <value>Gracz</value>
   </data>

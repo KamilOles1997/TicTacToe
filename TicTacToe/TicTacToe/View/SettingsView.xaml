@@ -27,11 +27,11 @@
 		<TextBlock Grid.Row="3" Grid.Column="0" Text="{x:Static resx:Resources.r12}"  HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
 
 		<ComboBox Grid.Row="1" Grid.Column="1" ItemsSource="{Binding Languages}" SelectedValue="{Binding SelectedLanguage}" Margin="10 0 0 0" Width="70" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
-		<ComboBox Grid.Row="2" Grid.Column="1" ItemsSource="{Binding Sizes}" SelectedValue="{Binding SelectedSise}" Margin="10 0 0 0" Width="70" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+		<ComboBox Grid.Row="2" Grid.Column="1" ItemsSource="{Binding Sizes}" SelectedValue="{Binding SelectedSize}" Margin="10 0 0 0" Width="70" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
 		<ComboBox Grid.Row="3" Grid.Column="1" ItemsSource="{Binding Wins}" SelectedValue="{Binding SelectedWin}" Margin="10 0 0 0" Width="70" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
 
 		<Button Content="{x:Static resx:Resources.r9}" Command="{Binding ComeBackComand}" Grid.Row="4" Width="90" Grid.Column="0" Margin="0 0 10 0" />
-		<Button Content="{x:Static resx:Resources.r8}" Command="{Binding SaveComand}" Grid.Row="4" Width="90" Grid.Column="1" Margin="0 0 10 0" />
+		<Button Content="{x:Static resx:Resources.r8}" Command="{Binding SaveCommand}" Grid.Row="4" Width="90" Grid.Column="1" Margin="0 0 10 0" />
 
 	</Grid>
 </UserControl>

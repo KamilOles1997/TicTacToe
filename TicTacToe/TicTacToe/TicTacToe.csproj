@@ -86,10 +86,9 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Design\DesignDataService.cs" />
-    <Compile Include="Model\DataItem.cs" />
+    <Compile Include="Model\AppEnums.cs" />
     <Compile Include="Model\DataService.cs" />
     <Compile Include="Model\IDataService.cs" />
-    <Compile Include="Model\MainSettings.cs" />
     <Compile Include="Properties\Resources.pl.Designer.cs">
       <DependentUpon>Resources.pl.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -179,7 +178,15 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Config\Settings.xml" />
+    <None Include="Config\Settings.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TicTacToeLib\TicTacToeLib.csproj">
+      <Project>{6ed5c3f8-32b0-464d-bec0-f3dfc4254a9b}</Project>
+      <Name>TicTacToeLib</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

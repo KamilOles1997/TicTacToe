@@ -5,7 +5,9 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:TicTacToe.View"
 			 xmlns:resx="clr-namespace:TicTacToe.Properties"
-             mc:Ignorable="d" 
+             xmlns:dialogs="clr-namespace:MahApps.Metro.Controls.Dialogs;assembly=MahApps.Metro"
+             mc:Ignorable="d"     
+             dialogs:DialogParticipation.Register="{Binding}"
              d:DesignHeight="500" d:DesignWidth="450"
 			 DataContext="{Binding Main, Source={StaticResource Locator}}">
     <Grid>

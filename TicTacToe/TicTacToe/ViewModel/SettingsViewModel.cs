@@ -1,6 +1,10 @@
 ﻿using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Command;
+using System;
 using System.Collections.Generic;
+using System.Windows.Input;
 using TicTacToe.Model;
+using TicTacToeLib.Model;
 
 namespace TicTacToe.ViewModel
 {
@@ -16,10 +20,25 @@ namespace TicTacToe.ViewModel
 		private string selectedLanguage;
 		private int selectedWin;
 		private int selectedSize;
+		private MainSettings settings;
+
+		private ICommand comeBackComand;
+		private ICommand saveCommand;
 
 		public List<string> Languages { get; set; }
 		public List<int> Sizes { get; set; }
 		public List<int> Wins { get; set; }
+		public MainSettings Settings
+		{
+			get
+			{
+				return settings;
+			}
+			set
+			{
+				Set(ref settings, value);
+			}
+		}
 
 		public string SelectedLanguage
 		{
@@ -39,6 +58,37 @@ namespace TicTacToe.ViewModel
 			set => Set(ref selectedSize, value);
 		}
 
+		public ICommand ComeBackComand
+		{
+			get
+			{
+				if (comeBackComand == null)
+				{
+					comeBackComand = new RelayCommand(
+							() => MessengerInstance.Send<string>(String.Empty,Tokens.BackToMainView),
+							() => true
+						);
+				}
+				return comeBackComand;
+			}
+		}
+
+		public ICommand SaveCommand
+		{
+			get
+			{
+				if (saveCommand == null)
+				{
+					saveCommand = new RelayCommand(
+							() => SaveSettings(),
+							() => true
+						);
+				}
+				return saveCommand;
+			}
+		}
+
+
 		/// <summary>
 		/// Initializes a new instance of the SettingsViewModel class.
 		/// </summary>
@@ -46,9 +96,33 @@ namespace TicTacToe.ViewModel
 		{
 			_dataService = dataService;
 
-			Languages = new List<string>() { "EN", "DE" };
+			Languages = new List<string>() { "EN", "PL" };
 			Sizes = new List<int>() { 3, 4, 5, 6, 7, 8 };
 			Wins = new List<int>() { 3, 4, 5 };
+
+			MessengerInstance.Register<MainSettings>(this, Tokens.OpenSettings, settings =>
+			{
+				SetSettings(settings);
+			});
+		}
+
+		public void SetSettings(MainSettings settings)
+		{
+			Settings = settings;
+			SelectedLanguage = Settings.Language;
+			SelectedSize = Settings.GameAreaSize;
+			SelectedWin = Settings.InRowToWin;
+		}
+
+		public void SaveSettings()
+		{
+			Settings = new MainSettings();
+			Settings.Language = SelectedLanguage;
+			Settings.InRowToWin = SelectedWin;
+			Settings.GameAreaSize = SelectedSize;
+
+			Settings.SaveToXML();
+			MessengerInstance.Send<string>(String.Empty, Tokens.BackToMainView);
 
 		}
 

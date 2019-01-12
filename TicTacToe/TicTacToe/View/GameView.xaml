@@ -9,6 +9,24 @@
              d:DesignHeight="500" d:DesignWidth="450"
 			 DataContext="{Binding Game, Source={StaticResource Locator}}">
     <Grid>
-            
-    </Grid>
+		<DockPanel >
+			<TextBlock Style="{StaticResource StatusTextStyle}" DockPanel.Dock="Bottom">
+            Tura gracza ze znakiem:  
+            <TextBlock Text="{Binding CurrentPlayerName}"/></TextBlock>
+
+			<ItemsControl ItemsSource="{Binding Cells}">
+				<ItemsControl.ItemsPanel>
+					<ItemsPanelTemplate>
+						<UniformGrid />
+					</ItemsPanelTemplate>
+				</ItemsControl.ItemsPanel>
+				<ItemsControl.Template>
+					<ControlTemplate TargetType="ItemsControl">
+							<ItemsPresenter Margin="20"/>
+					</ControlTemplate>
+				</ItemsControl.Template>
+			</ItemsControl>
+		</DockPanel>
+
+	</Grid>
 </UserControl>

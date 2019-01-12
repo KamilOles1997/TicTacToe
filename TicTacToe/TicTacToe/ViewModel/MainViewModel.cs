@@ -1,8 +1,13 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Ioc;
+using MahApps.Metro.Controls.Dialogs;
+using System;
+using System.Windows;
 using System.Windows.Input;
 using TicTacToe.Model;
+using TicTacToe.Properties;
+using TicTacToeLib.Model;
 
 namespace TicTacToe.ViewModel
 {
@@ -19,7 +24,8 @@ namespace TicTacToe.ViewModel
 		private ICommand playViewCommand;
 		private ICommand settingsViewCommand;
 		private ICommand aboutProgramCommand;
-		
+		private ResourceDictionary DialogDictionary = new ResourceDictionary() { Source = new Uri("pack://application:,,,/MaterialDesignThemes.MahApps;component/Themes/MaterialDesignTheme.MahApps.Dialogs.xaml") };
+
 
 		public ICommand PlayViewCommand
 		{
@@ -28,7 +34,7 @@ namespace TicTacToe.ViewModel
 				if (playViewCommand == null)
 				{
 					playViewCommand = new RelayCommand(
-							() => SetCurrentView(SimpleIoc.Default.GetInstance<GameViewModel>()),
+							() => ShowDialog(),
 							() => true
 						);
 				}
@@ -74,14 +80,19 @@ namespace TicTacToe.ViewModel
 			}
 			else if(vm is SettingsViewModel)
 			{
-
+				MessengerInstance.Send<MainSettings>(MainSettings.LoadFromXML(), Tokens.OpenSettings);
 			}
 			CurrentViewModel = vm;
 		}
 
-		private void OpenAboutDialog()
+		private async void OpenAboutDialog()
 		{
-
+			var metroDialogSettings = new MetroDialogSettings
+			{
+				CustomResourceDictionary = DialogDictionary,
+			};
+			string message = "Wykorzystany Framework: \n-MVVM Light \n\nWykorzystane biblioteki: \n-MahApps.Metro \n-MaterialDesignThemes \n-ControlzEx \n-CommonServiceLocator";
+			await DialogCoordinator.Instance.ShowMessageAsync(this, Resources.r1, message, MessageDialogStyle.Affirmative, metroDialogSettings);
 		}
 
 		public ViewModelBase CurrentViewModel
@@ -97,6 +108,20 @@ namespace TicTacToe.ViewModel
 		{
 			_dataService = dataService;
 			CurrentViewModel = this;
+			MessengerInstance.Register<string>(this, Tokens.BackToMainView, (a) => SetCurrentView(this));
+		}
+
+		public async void ShowDialog()
+		{
+			var metroDialogSettings = new MetroDialogSettings
+			{
+				CustomResourceDictionary = DialogDictionary,
+			};
+
+			string playerX = await DialogCoordinator.Instance.ShowInputAsync(this, Resources.r1, Resources.r13, metroDialogSettings);			;
+			string playerO = await DialogCoordinator.Instance.ShowInputAsync(this, Resources.r1, Resources.r14, metroDialogSettings); ;
+
+			SetCurrentView(SimpleIoc.Default.GetInstance<GameViewModel>());
 		}
 
 		////public override void Cleanup()
