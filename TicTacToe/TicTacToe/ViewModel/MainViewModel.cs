@@ -33,7 +33,7 @@ namespace TicTacToe.ViewModel
 			{
 				if (playViewCommand == null)
 				{
-					playViewCommand = new RelayCommand(
+					playViewCommand = new GalaSoft.MvvmLight.Command.RelayCommand(
 							() => ShowDialog(),
 							() => true
 						);
@@ -48,7 +48,7 @@ namespace TicTacToe.ViewModel
 			{
 				if (settingsViewCommand == null)
 				{
-					settingsViewCommand = new RelayCommand(
+					settingsViewCommand = new GalaSoft.MvvmLight.Command.RelayCommand(
 							() => SetCurrentView(SimpleIoc.Default.GetInstance<SettingsViewModel>()),
 							() => true
 						);
@@ -63,7 +63,7 @@ namespace TicTacToe.ViewModel
 			{
 				if (aboutProgramCommand == null)
 				{
-					aboutProgramCommand = new RelayCommand(
+					aboutProgramCommand = new GalaSoft.MvvmLight.Command.RelayCommand(
 							() => OpenAboutDialog(),
 							() => true
 						);
@@ -122,6 +122,9 @@ namespace TicTacToe.ViewModel
 			string playerO = await DialogCoordinator.Instance.ShowInputAsync(this, Resources.r1, Resources.r14, metroDialogSettings); ;
 
 			SetCurrentView(SimpleIoc.Default.GetInstance<GameViewModel>());
+			MessengerInstance.Send<string>(playerX, Tokens.SetPlayerX);
+			MessengerInstance.Send<string>(playerO, Tokens.SetPlayerO);
+			MessengerInstance.Send<string>(String.Empty, Tokens.StartGame);
 		}
 
 		////public override void Cleanup()

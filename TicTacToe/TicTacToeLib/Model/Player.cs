@@ -10,6 +10,8 @@ namespace TicTacToeLib.Model
 	public class Player : ObservableObject
 	{
 		private string name;
+		private string type;
+
 		public string Name
 		{
 			get
@@ -21,5 +23,18 @@ namespace TicTacToeLib.Model
 				Set(ref name, value);
 			}
 		}
+
+		public string Type
+		{
+			get
+			{
+				return type;
+			}
+			set
+			{
+				Set(ref type, value);
+			}
+		}
+
 	}
 }

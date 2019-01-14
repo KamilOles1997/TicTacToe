@@ -64,7 +64,7 @@ namespace TicTacToe.ViewModel
 			{
 				if (comeBackComand == null)
 				{
-					comeBackComand = new RelayCommand(
+					comeBackComand = new GalaSoft.MvvmLight.Command.RelayCommand(
 							() => MessengerInstance.Send<string>(String.Empty,Tokens.BackToMainView),
 							() => true
 						);
@@ -79,7 +79,7 @@ namespace TicTacToe.ViewModel
 			{
 				if (saveCommand == null)
 				{
-					saveCommand = new RelayCommand(
+					saveCommand = new GalaSoft.MvvmLight.Command.RelayCommand(
 							() => SaveSettings(),
 							() => true
 						);

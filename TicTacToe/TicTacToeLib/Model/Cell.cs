@@ -24,9 +24,9 @@ namespace TicTacToeLib.Model
 			}
 		}
 
-		private PlayerMove move;
+		private Player move;
 
-		public PlayerMove Move
+		public Player Move
 		{
 			get
 			{

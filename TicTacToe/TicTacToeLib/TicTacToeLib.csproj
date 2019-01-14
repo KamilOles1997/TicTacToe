@@ -56,9 +56,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Model\Cell.cs" />
+    <Compile Include="Model\Game.cs" />
     <Compile Include="Model\MainSettings.cs" />
     <Compile Include="Model\Player.cs" />
-    <Compile Include="Model\PlayerMove.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -9,6 +9,9 @@ namespace TicTacToe.Model
     public enum Tokens
 	{
 		OpenSettings,
-		BackToMainView
+		BackToMainView,
+		StartGame,
+		SetPlayerX,
+		SetPlayerO
 	}
 }

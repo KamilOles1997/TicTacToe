@@ -10,11 +10,13 @@
 			 DataContext="{Binding Game, Source={StaticResource Locator}}">
     <Grid>
 		<DockPanel >
-			<TextBlock Style="{StaticResource StatusTextStyle}" DockPanel.Dock="Bottom">
-            Tura gracza ze znakiem:  
-            <TextBlock Text="{Binding CurrentPlayerName}"/></TextBlock>
+			<StackPanel DockPanel.Dock="Bottom" HorizontalAlignment="Center" Orientation="Horizontal" VerticalAlignment="Center">
+				<TextBlock FontSize="24" Text="Tura gracza: "/>
+				<TextBlock FontSize="24" Text="{Binding Game.CurrentPlayer.Name}"/>
+			</StackPanel>
 
-			<ItemsControl ItemsSource="{Binding Cells}">
+
+			<ItemsControl ItemsSource="{Binding Game.Cells}">
 				<ItemsControl.ItemsPanel>
 					<ItemsPanelTemplate>
 						<UniformGrid />
