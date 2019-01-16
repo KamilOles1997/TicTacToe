@@ -47,7 +47,7 @@ namespace TicTacToeLib.Model
 
 
 
-		public static MainSettings LoadFromXML(string settingsPath = "Config\\Setings.xml")
+		public static MainSettings LoadFromXML(string settingsPath = "Config\\Settings.xml")
 		{
 			try
 			{
@@ -55,8 +55,8 @@ namespace TicTacToeLib.Model
 				{
 					MainSettings settings = new MainSettings();
 					settings.Language = "PL";
-					settings.InRowToWin = 4;
-					settings.GameAreaSize = 6;
+					settings.InRowToWin = 3;
+					settings.GameAreaSize = 3;
 
 					settings.SaveToXML();
 					return settings;

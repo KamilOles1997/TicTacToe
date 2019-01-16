@@ -1,8 +1,12 @@
 ﻿using GalaSoft.MvvmLight;
+using MahApps.Metro.Controls.Dialogs;
 using System;
 using System.Collections.ObjectModel;
+using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 using TicTacToe.Model;
+using TicTacToe.Properties;
 using TicTacToeLib.Model;
 
 namespace TicTacToe.ViewModel
@@ -18,6 +22,7 @@ namespace TicTacToe.ViewModel
 		private readonly IDataService _dataService;
 		private Game game;
 		private ICommand moveCommand;
+		private ResourceDictionary DialogDictionary = new ResourceDictionary() { Source = new Uri("pack://application:,,,/MaterialDesignThemes.MahApps;component/Themes/MaterialDesignTheme.MahApps.Dialogs.xaml") };
 
 		public ICommand MoveCommand
 		{
@@ -26,7 +31,7 @@ namespace TicTacToe.ViewModel
 				if (moveCommand == null)
 				{
 					moveCommand = new RelayCommand
-						(cellnumber => this.Move(Convert.ToInt32(cellnumber)),
+						(cellnumber => this.Game.Move(Convert.ToInt32(cellnumber)),
 						cellnumber => this.CanMove(Convert.ToInt32(cellnumber)));
 				}
 				return moveCommand;
@@ -44,10 +49,36 @@ namespace TicTacToe.ViewModel
 		public GameViewModel(IDataService dataService)
 		{
 			Game = new Game();
+			Game.GameEndedNoWin += Game_GameEndedNoWin;
+			Game.GameEndedWin += Game_GameEndedWin;
+
 			_dataService = dataService;
 			MessengerInstance.Register<string>(this, Tokens.SetPlayerX, (a) => SetPlayerXName(a));
 			MessengerInstance.Register<string>(this, Tokens.SetPlayerO, (a) => SetPlayerOName(a));
 			MessengerInstance.Register<string>(this, Tokens.StartGame, (a) => StartGame());
+		}
+
+		private async Task<Player> Game_GameEndedWin(Player arg)
+		{
+			var metroDialogSettings = new MetroDialogSettings
+			{
+				CustomResourceDictionary = DialogDictionary,
+			};
+			string message = Resources.r15 + arg.Name;
+			await DialogCoordinator.Instance.ShowMessageAsync(this, Resources.r1, message, MessageDialogStyle.Affirmative, metroDialogSettings);
+			MessengerInstance.Send<string>(String.Empty, Tokens.BackToMainView);
+			return arg;
+		}
+
+		private async void Game_GameEndedNoWin()
+		{
+			var metroDialogSettings = new MetroDialogSettings
+			{
+				CustomResourceDictionary = DialogDictionary,
+			};
+			string message = Resources.r16;
+			await DialogCoordinator.Instance.ShowMessageAsync(this, Resources.r1, message, MessageDialogStyle.Affirmative, metroDialogSettings);
+			MessengerInstance.Send<string>(String.Empty, Tokens.BackToMainView);
 		}
 
 		private bool CanMove(int cellNumber)
@@ -65,42 +96,6 @@ namespace TicTacToe.ViewModel
 			{
 				return false;
 			}
-		}
-
-
-		private void Move(int cellNumber)
-		{
-			Game.Cells[cellNumber].Move = Game.CurrentPlayer;
-			//cells[cellNumber].Move = new PlayerMove(currentPlayerName);
-
-			//if (HasWon(currentPlayerName))
-			//{
-			//	RaiseGameOverEvent(new GameOverEventArgs()
-			//	{
-			//		IsTie = false,
-			//		WinnerName = currentPlayerName
-			//	});
-			//	NewGame();
-			//}
-			//else if (TieGame())
-			//{
-			//	RaiseGameOverEvent(new GameOverEventArgs() { IsTie = true });
-			//	NewGame();
-			//}
-
-			//else
-			//{
-			//	if (currentPlayerName.Equals("x"))
-			//	{
-			//		CurrentPlayerName = "o";
-			//	}
-			//	else
-			//	{
-			//		CurrentPlayerName = "x";
-			//	}
-			//}
-
-			Game.CurrentPlayer = Game.CurrentPlayer == Game.PlayerCross ? Game.PlayerCircle : Game.PlayerCross;
 		}
 
 		public void StartGame()

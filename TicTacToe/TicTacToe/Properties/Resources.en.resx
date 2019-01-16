@@ -135,6 +135,12 @@
   <data name="r14" xml:space="preserve">
     <value>Provide name for player O</value>
   </data>
+  <data name="r15" xml:space="preserve">
+    <value>The winner is: </value>
+  </data>
+  <data name="r16" xml:space="preserve">
+    <value>No winner in this game!</value>
+  </data>
   <data name="r2" xml:space="preserve">
     <value>Player</value>
   </data>

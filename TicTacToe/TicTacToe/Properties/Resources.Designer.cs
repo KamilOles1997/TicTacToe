@@ -115,6 +115,24 @@ namespace TicTacToe.Properties {
         }
         
         /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Wygrał gracz: .
+        /// </summary>
+        public static string r15 {
+            get {
+                return ResourceManager.GetString("r15", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Brak wygranego w tej rozgrywce.
+        /// </summary>
+        public static string r16 {
+            get {
+                return ResourceManager.GetString("r16", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         /// Wyszukuje zlokalizowany ciąg podobny do ciągu Gracz.
         /// </summary>
         public static string r2 {

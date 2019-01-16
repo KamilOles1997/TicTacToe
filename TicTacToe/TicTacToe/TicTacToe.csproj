@@ -35,6 +35,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>iconfinder_Tic-Tac-Toe-Game-grey_190298.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="ControlzEx, Version=3.0.2.4, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\ControlzEx.3.0.2.4\lib\net45\ControlzEx.dll</HintPath>
@@ -188,6 +191,12 @@
       <Project>{6ed5c3f8-32b0-464d-bec0-f3dfc4254a9b}</Project>
       <Name>TicTacToeLib</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Skins\iconfinder_Tic-Tac-Toe-Game-grey_190298.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="iconfinder_Tic-Tac-Toe-Game-grey_190298.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

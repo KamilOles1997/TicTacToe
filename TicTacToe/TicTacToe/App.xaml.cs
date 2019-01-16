@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using GalaSoft.MvvmLight.Threading;
+using TicTacToeLib.Model;
 
 namespace TicTacToe
 {
@@ -11,7 +12,9 @@ namespace TicTacToe
 		static App()
 		{
 			DispatcherHelper.Initialize();
-			//System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("en"); 
+
+			string lang = MainSettings.LoadFromXML().Language;
+			System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(lang); 
 		}
 	}
 }
